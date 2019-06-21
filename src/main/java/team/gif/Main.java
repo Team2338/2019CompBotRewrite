@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package team.gif.robot;
+package team.gif;
 
 import edu.wpi.first.wpilibj.RobotBase;
 
