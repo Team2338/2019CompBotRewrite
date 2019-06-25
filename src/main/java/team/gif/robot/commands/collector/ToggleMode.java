@@ -3,23 +3,20 @@ package team.gif.robot.commands.collector;
 import edu.wpi.first.wpilibj.command.Command;
 import team.gif.robot.subsystems.Collector;
 
-public class SetMode extends Command {
+public class ToggleMode extends Command {
 
     private final Collector collector = Collector.getInstance();
     private boolean isFinished = false;
-    private boolean hatchMode;
 
-    public SetMode(boolean hatchMode) {
-        this.hatchMode = hatchMode;
-        requires(collector);
-    }
+    public ToggleMode() { requires(collector); }
 
     @Override
     protected void initialize() {
         isFinished = false;
-        collector.setHatchMode(hatchMode);
+        collector.setHatchMode(!collector.isHatchMode());
         collector.openClamp(true);
         collector.deployHooks(false);
+        System.out.println("Is Hatch Mode ? " + collector.isHatchMode());
     }
 
     @Override
@@ -27,7 +24,7 @@ public class SetMode extends Command {
         if (timeSinceInitialized() > 0.4 ) {
             isFinished = true;
         } else if (timeSinceInitialized() > 0.1 ) {
-            collector.engageServoBrakes(!hatchMode);
+            collector.engageServoBrakes(!collector.isHatchMode());
         }
     }
 
@@ -35,5 +32,6 @@ public class SetMode extends Command {
     protected boolean isFinished() { return isFinished; }
 
     @Override
-    protected void end() {collector.openClamp(false); }
+    protected void end() { collector.openClamp(false); }
+
 }

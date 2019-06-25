@@ -8,10 +8,9 @@ import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import team.gif.Constants;
-import team.gif.Robot;
 import team.gif.RobotMap;
 
-public class Collector {
+public class Collector extends Subsystem {
 
     private static Collector instance;
 
@@ -38,6 +37,43 @@ public class Collector {
 
         intake.configFactoryDefault();
         intake.setInverted(true);
+
+    }
+
+    public static Collector getInstance() {
+        if (instance == null) {
+            instance = new Collector();
+        }
+        return instance;
+    }
+
+    public void setIntake(double percent) { intake.set(ControlMode.PercentOutput, percent); }
+
+    public void deployCollector(boolean out) { deploy.set(out); }
+
+    public void openClamp(boolean open) { clamp.set(open); }
+
+    public void deployHooks(boolean out) {
+        hooks.set(out ? DoubleSolenoid.Value.kForward : DoubleSolenoid.Value.kReverse);
+    }
+
+    public void engageServoBrakes(boolean engaged) {
+        left.set(engaged ? Constants.Collector.LEFT_BRAKE_POS : Constants.Collector.LEFT_NEUTRAL_POS);
+        right.set(engaged ? Constants.Collector.RIGHT_BRAKE_POS : Constants.Collector.RIGHT_NEUTRAL_POS);
+    }
+
+    public void setHatchMode(boolean hatchMode) { this.hatchMode = hatchMode; }
+
+    public boolean isHatchMode() { return hatchMode; }
+
+    public boolean isDeployed() { return deploy.get(); }
+
+    public boolean hasBall() { return ballSensor.getAverageVoltage() < 1.0; }
+
+    TalonSRX getDriveEncoderTalon() { return intake; }
+
+    @Override
+    protected void initDefaultCommand() {
 
     }
 }
