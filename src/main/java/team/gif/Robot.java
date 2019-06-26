@@ -23,6 +23,7 @@ import team.gif.robot.subsystems.Elevator;
 public class Robot extends TimedRobot {
 
   private final Collector collector = Collector.getInstance();
+  private final OI oi = OI.getInstance();
 
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
@@ -93,6 +94,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+    Scheduler.getInstance().run();
   }
 
   /**

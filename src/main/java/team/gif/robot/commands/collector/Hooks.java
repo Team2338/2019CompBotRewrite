@@ -3,26 +3,28 @@ package team.gif.robot.commands.collector;
 import edu.wpi.first.wpilibj.command.Command;
 import team.gif.robot.subsystems.Collector;
 
-public class Collect extends Command {
+public class Hooks extends Command {
 
     private final Collector collector = Collector.getInstance();
+    private boolean isFinished = false;
 
-    public Collect() { requires(collector); }
+    public Hooks() { requires(collector);}
 
     @Override
     protected void initialize() {
-
+        if (collector.isHatchMode()) {
+            collector.deployHooks(true);
+        }
     }
 
     @Override
     protected void execute() {
-        collector.setIntake(0.3);
+
     }
 
+    @Override
+    protected boolean isFinished() { return isFinished; }
 
     @Override
-    protected boolean isFinished() { return false; }
-
-    @Override
-    protected void end() { collector.setIntake(0.0);}
+    protected void end() { collector.isHatchMode(); }
 }

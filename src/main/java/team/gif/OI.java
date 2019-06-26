@@ -3,10 +3,7 @@ package team.gif;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.POVButton;
-import team.gif.robot.commands.collector.Collect;
-import team.gif.robot.commands.collector.Eject;
-import team.gif.robot.commands.collector.ToggleDeploy;
-import team.gif.robot.commands.collector.ToggleMode;
+import team.gif.robot.commands.collector.*;
 
 public class OI {
 
@@ -15,13 +12,14 @@ public class OI {
     public final XboxController driver = new XboxController(RobotMap.DRIVER_CONTROLLER_ID);
     public final XboxController aux = new XboxController(RobotMap.AUX_CONTROLLER_ID);
 
+
     public final JoystickButton dA = new JoystickButton(driver, 1);
     public final JoystickButton dB = new JoystickButton(driver, 2);
     public final JoystickButton dX = new JoystickButton(driver, 3);
     public final JoystickButton dY = new JoystickButton(driver, 4);
     public final JoystickButton dLB = new JoystickButton(driver, 5);
     public final JoystickButton dRB = new JoystickButton(driver, 6);
-    public final JoystickButton dBack = new JoystickButton(driver, 7);
+   // public final JoystickButton dBack = new JoystickButton(driver, 7);
     public final JoystickButton dStart = new JoystickButton(driver, 8);
     public final JoystickButton dLS = new JoystickButton(driver, 9);
     public final JoystickButton dRS = new JoystickButton(driver, 10);
@@ -32,11 +30,12 @@ public class OI {
     public final JoystickButton aY = new JoystickButton(aux, 4);
     public final JoystickButton aLB = new JoystickButton(aux, 5);
     public final JoystickButton aRB = new JoystickButton(aux, 6);
-    public final JoystickButton aBack = new JoystickButton(aux, 7);
+   // public final JoystickButton aBack = new JoystickButton(aux, 7);
     public final JoystickButton aStart = new JoystickButton(aux, 8);
     public final JoystickButton aLS = new JoystickButton(aux, 9);
     public final JoystickButton aRS = new JoystickButton(aux, 10);
 
+    /*
     public final POVButton dDPadUp = new POVButton(driver, 0);
     public final POVButton dDPadRight = new POVButton(driver, 90);
     public final POVButton dDPadDown = new POVButton(driver, 180);
@@ -45,10 +44,13 @@ public class OI {
     public final POVButton aDPadRight = new POVButton(aux, 90);
     public final POVButton aDPadDown = new POVButton(aux, 180);
     public final POVButton aDPadLeft = new POVButton(aux, 270);
+    */
 
     private OI() {
-        dLB.whileHeld(new Eject());
-        dRB.whileHeld(new Collect());
+        dA.whileHeld(new Eject());
+        dB.whileHeld(new Collect());
+        dX.whenPressed(new Hooks());
+        dY.whenPressed(new UnfoldHooks());
 
         aX.whenPressed(new ToggleDeploy());
         aY.whenPressed(new ToggleMode());
