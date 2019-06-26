@@ -47,8 +47,8 @@ public class OI {
     */
 
     private OI() {
-        dA.whileHeld(new Eject());
-        dB.whileHeld(new Collect());
+        dLB.whileHeld(new Eject());
+        dRB.whileHeld(new Collect());
         dX.whenPressed(new Hooks());
         dY.whenPressed(new UnfoldHooks());
 

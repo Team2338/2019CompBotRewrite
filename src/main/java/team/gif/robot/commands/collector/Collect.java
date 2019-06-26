@@ -16,9 +16,8 @@ public class Collect extends Command {
 
     @Override
     protected void execute() {
-        collector.setIntake(0.3);
+        collector.setIntake(0.4);
     }
-
 
     @Override
     protected boolean isFinished() { return false; }

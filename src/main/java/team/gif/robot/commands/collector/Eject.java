@@ -16,11 +16,7 @@ public class Eject extends Command {
 
     @Override
     protected void execute() {
-        if (collector.isHatchMode()) {
-            collector.deployHooks(false);
-        } else {
-            collector.setIntake(-1.0);
-        }
+        collector.setIntake(-1.0);
     }
 
     @Override
