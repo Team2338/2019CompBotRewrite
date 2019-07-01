@@ -21,7 +21,7 @@ public class DriveTeleOp extends Command {
 
     @Override
     protected void execute() {
-        // Actual command and type goes here
+        // Actual command and drive type goes here
     }
 
     @Override

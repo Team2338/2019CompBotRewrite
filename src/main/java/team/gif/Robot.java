@@ -23,6 +23,7 @@ import team.gif.robot.subsystems.Elevator;
 public class Robot extends TimedRobot {
 
   private final Collector collector = Collector.getInstance();
+  private final Drivetrain drivetrain = Drivetrain.getInstance();
   private final OI oi = OI.getInstance();
 
   private static final String kDefaultAuto = "Default";
@@ -53,6 +54,12 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+  }
+
+  @Override
+  public void disabledInit() {
+    drivetrain.setBrakeMode(false);
+
   }
 
   /**

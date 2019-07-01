@@ -16,7 +16,7 @@ public class Collect extends Command {
 
     @Override
     protected void execute() {
-        collector.setIntake(0.4);
+        collector.setIntake(0.5);
     }
 
     @Override
