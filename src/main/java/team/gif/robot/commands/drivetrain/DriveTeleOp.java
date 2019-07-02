@@ -4,12 +4,14 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.command.Command;
 import team.gif.Constants;
 import team.gif.OI;
+import team.gif.lib.DriveController;
 import team.gif.robot.subsystems.Drivetrain;
 import team.gif.robot.subsystems.Elevator;
 
 public class DriveTeleOp extends Command {
 
     private final Drivetrain drivetrain = Drivetrain.getInstance();
+    private final DriveController controller = new DriveController();
    // private final Elevator elevator = Elevator.getInstance();
 
     public DriveTeleOp() { requires(drivetrain); }
@@ -21,7 +23,12 @@ public class DriveTeleOp extends Command {
 
     @Override
     protected void execute() {
-        // Actual command and drive type goes here
+        double magnitude = -OI.getInstance().driver.getY(GenericHID.Hand.kLeft);
+        double rotation = OI.getInstance().driver.getX(GenericHID.Hand.kRight);
+        boolean quickTurn = false;
+
+        double[] outputs = controller.curvatureDrive(magnitude, rotation, quickTurn);
+        drivetrain.setOutputs(outputs[0], outputs[1]);
     }
 
     @Override

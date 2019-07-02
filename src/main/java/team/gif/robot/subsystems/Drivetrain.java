@@ -3,12 +3,11 @@ package team.gif.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.ctre.phoenix.sensors.PigeonIMU;
+// import com.ctre.phoenix.sensors.PigeonIMU;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel;
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import team.gif.Constants;
+// import team.gif.Constants;
 import team.gif.Robot;
 import team.gif.RobotMap;
 import team.gif.robot.commands.drivetrain.DriveTeleOp;
@@ -63,13 +62,12 @@ public class Drivetrain extends Subsystem {
     }
 
     /*
-        public void setRampRate(double seconds) {
+    public void setRampRate(double seconds) {
         leftMaster.setOpenLoopRampRate(seconds);
         rightMaster.setOpenLoopRampRate(seconds);
         leftSlave.setOpenLoopRampRate(seconds);
         rightSlave.setOpenLoopRampRate(seconds);
     }
-
     */
 
     private void configNeo(CANSparkMax spark) {

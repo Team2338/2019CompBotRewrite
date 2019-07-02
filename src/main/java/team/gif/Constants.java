@@ -10,4 +10,10 @@ public abstract class Constants {
         public static final double RIGHT_BRAKE_POS = Robot.isCompBot ? 0.615: 0.52;
         public static final double RIGHT_NEUTRAL_POS = Robot.isCompBot ? 0.125: 0.0;
     }
+
+    public static class Drivetrain {
+        public static final double INPUT_DEADBAND = 0.05;
+        public static final double QUICK_STOP_THRESHOLD = 0.2;
+        public static final double QUICK_STOP_ALPHA = 0.1;
+    }
 }
