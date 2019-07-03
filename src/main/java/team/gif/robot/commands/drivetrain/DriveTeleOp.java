@@ -1,5 +1,6 @@
 package team.gif.robot.commands.drivetrain;
 
+import com.sun.tools.javac.jvm.Gen;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.command.Command;
 import team.gif.Constants;
@@ -23,12 +24,20 @@ public class DriveTeleOp extends Command {
 
     @Override
     protected void execute() {
+        /*
         double magnitude = -OI.getInstance().driver.getY(GenericHID.Hand.kLeft);
         double rotation = OI.getInstance().driver.getX(GenericHID.Hand.kRight);
         boolean quickTurn = false;
 
         double[] outputs = controller.curvatureDrive(magnitude, rotation, quickTurn);
         drivetrain.setOutputs(outputs[0], outputs[1]);
+        */
+        double leftSpeed = -OI.getInstance().driver.getY(GenericHID.Hand.kLeft);
+        double rightSpeed = OI.getInstance().driver.getX(GenericHID.Hand.kRight);
+
+        double[] outputs = controller.tankDrive(leftSpeed, rightSpeed, true);
+        drivetrain.setOutputs(outputs[0], outputs[1]);
+
     }
 
     @Override
