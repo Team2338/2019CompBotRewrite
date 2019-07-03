@@ -68,7 +68,7 @@ public class Collector extends Subsystem {
 
     public boolean isDeployed() { return deploy.get(); }
 
-    public boolean hasBall() { return ballSensor.getAverageVoltage() < 1.0; }
+    // public boolean hasBall() { return ballSensor.getAverageVoltage() < 1.0; }
 
     TalonSRX getDriveEncoderTalon() { return intake; }
 
