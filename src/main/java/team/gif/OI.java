@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.POVButton;
 import team.gif.robot.commands.collector.*;
 import team.gif.robot.commands.drivetrain.DriveTeleOp;
+import team.gif.robot.commands.elevator.MoveElevator;
 
 public class OI {
 
@@ -36,7 +37,6 @@ public class OI {
     public final JoystickButton aLS = new JoystickButton(aux, 9);
     public final JoystickButton aRS = new JoystickButton(aux, 10);
 
-    /*
     public final POVButton dDPadUp = new POVButton(driver, 0);
     public final POVButton dDPadRight = new POVButton(driver, 90);
     public final POVButton dDPadDown = new POVButton(driver, 180);
@@ -45,7 +45,6 @@ public class OI {
     public final POVButton aDPadRight = new POVButton(aux, 90);
     public final POVButton aDPadDown = new POVButton(aux, 180);
     public final POVButton aDPadLeft = new POVButton(aux, 270);
-    */
 
     private OI() {
         dLB.whileHeld(new Eject());
@@ -55,6 +54,8 @@ public class OI {
 
         aX.whenPressed(new ToggleDeploy());
         aY.whenPressed(new ToggleMode());
+
+        aDPadLeft.whenPressed(new MoveElevator());
 
     }
 
