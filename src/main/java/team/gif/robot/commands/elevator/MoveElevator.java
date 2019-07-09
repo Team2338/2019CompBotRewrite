@@ -8,20 +8,20 @@ public class MoveElevator extends Command {
 
     private final Elevator elevator = Elevator.getInstance();
 
-    public MoveElevator() { requires(elevator); }
-
     @Override
     protected void initialize() {
-
+        elevator.setCruiseVelocity(400);
     }
 
     @Override
     protected void execute() {
-        elevator.setPercentOutput(0.2);
+        elevator.setPercentOutput(0.3);
     }
 
     @Override
-    protected boolean isFinished() { return false; }
+    protected boolean isFinished() {
+        return elevator.isFinished();
+    }
 
     @Override
     protected void end() {

@@ -16,4 +16,14 @@ public abstract class Constants {
         public static final double QUICK_STOP_THRESHOLD = 0.2;
         public static final double QUICK_STOP_ALPHA = 0.1;
     }
+
+    public static class Elevator {
+        public static final int ALLOWABLE_ERROR = 100;
+        public static final int MAX_VELOCITY = 1700;
+        public static final int REV_MAX_VELOCITY = 2800;
+        public static final int MAX_ACCELERATION = 8000;
+
+        public static final int MIN_POS = Robot.isCompBot ? 200 : 900;
+        public static final int MAX_POS = Robot.isCompBot ? 33700 : 34400;
+    }
 }

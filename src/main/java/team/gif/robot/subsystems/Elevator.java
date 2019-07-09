@@ -18,6 +18,25 @@ public class Elevator extends Subsystem {
         configLift(lift);
     }
 
+    public static Elevator getInstance() {
+        if (instance == null) {
+            instance = new Elevator();
+        }
+        return instance;
+    }
+
+    public void setPercentOutput(double percent) {
+        lift.set(ControlMode.PercentOutput, percent);
+    }
+
+    public void setCruiseVelocity(int ticksper100ms) {
+        lift.configMotionCruiseVelocity(ticksper100ms);
+    }
+
+    public boolean isFinished() {
+        return Math.abs(lift.getClosedLoopError()) < Constants.Elevator.ALLOWABLE_ERROR;
+    }
+
     private void configLift(TalonSRX talon) {
         talon.configFactoryDefault();
         talon.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
@@ -25,17 +44,9 @@ public class Elevator extends Subsystem {
         talon.setSensorPhase(true);
         talon.setInverted(false);
         talon.setNeutralMode(NeutralMode.Brake);
-    }
 
-    public void setPercentOutput(double percent) {
-        lift.set(ControlMode.PercentOutput, percent);
-    }
-
-    public static Elevator getInstance() {
-        if (instance == null) {
-            instance = new Elevator();
-        }
-        return instance;
+        talon.configMotionCruiseVelocity(Constants.Elevator.MAX_VELOCITY);
+        talon.configMotionAcceleration(Constants.Elevator.MAX_ACCELERATION);
     }
 
     @Override
