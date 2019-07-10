@@ -18,6 +18,11 @@ public abstract class Constants {
     }
 
     public static class Elevator {
+        public static double P = 3.0;
+        public static final double I = 0.0;
+        public static final double D = 0.0;
+        public static final double F = 0.0;
+
         public static final int ALLOWABLE_ERROR = 100;
         public static final int MAX_VELOCITY = 1700;
         public static final int REV_MAX_VELOCITY = 2800;

@@ -24,6 +24,7 @@ public class Robot extends TimedRobot {
 
   private final Collector collector = Collector.getInstance();
   private final Drivetrain drivetrain = Drivetrain.getInstance();
+  private final Elevator elevator = Elevator.getInstance();
   private final OI oi = OI.getInstance();
 
   private static final String kDefaultAuto = "Default";
@@ -39,9 +40,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
-    m_chooser.addOption("My Auto", kCustomAuto);
-    SmartDashboard.putData("Auto choices", m_chooser);
+    SmartDashboard.putNumber("P_Value", Constants.Elevator.P);
   }
 
   /**
@@ -54,6 +53,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    elevator.displayMetrics();
   }
 
   @Override
@@ -96,6 +96,10 @@ public class Robot extends TimedRobot {
     }
   }
 
+  @Override
+  public void teleopInit() {
+    Constants.Elevator.P = SmartDashboard.getNumber("P_Value", Constants.Elevator.P);
+  }
   /**
    * This function is called periodically during operator control.
    */

@@ -1,30 +1,38 @@
 package team.gif.robot.commands.elevator;
 
 import edu.wpi.first.wpilibj.command.Command;
-import team.gif.robot.subsystems.Elevator;
 import team.gif.Constants;
+import team.gif.robot.subsystems.Elevator;
 
-public class MoveElevator extends Command {
+public class SetElevatorPosition extends Command {
 
     private final Elevator elevator = Elevator.getInstance();
+    private double position;
+
+    public SetElevatorPosition(double setpoint) {
+        requires(elevator);
+        position = setpoint;
+    }
 
     @Override
     protected void initialize() {
-        elevator.setCruiseVelocity(400);
+        elevator.setP(Constants.Elevator.P);
+        elevator.setPosition(position);
     }
 
     @Override
     protected void execute() {
-        elevator.setPercentOutput(0.3);
+
     }
 
     @Override
     protected boolean isFinished() {
-        return elevator.isFinished();
+        return false;
     }
 
     @Override
     protected void end() {
 
     }
+
 }

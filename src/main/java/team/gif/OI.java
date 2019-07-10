@@ -4,8 +4,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.POVButton;
 import team.gif.robot.commands.collector.*;
-import team.gif.robot.commands.drivetrain.DriveTeleOp;
-import team.gif.robot.commands.elevator.MoveElevator;
+import team.gif.robot.commands.elevator.SetElevatorPosition;
 
 public class OI {
 
@@ -55,7 +54,7 @@ public class OI {
         aX.whenPressed(new ToggleDeploy());
         aY.whenPressed(new ToggleMode());
 
-        aDPadLeft.whenPressed(new MoveElevator());
+        aA.whenPressed(new SetElevatorPosition(10000));
 
     }
 
