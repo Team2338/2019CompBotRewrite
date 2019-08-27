@@ -47,11 +47,17 @@ public class Collector extends Subsystem {
         return instance;
     }
 
-    public void setIntake(double percent) { intake.set(ControlMode.PercentOutput, percent); }
+    public void setIntake(double percent) {
+        intake.set(ControlMode.PercentOutput, percent);
+    }
 
-    public void deployCollector(boolean out) { deploy.set(out); }
+    public void deployCollector(boolean out) {
+        deploy.set(out);
+    }
 
-    public void openClamp(boolean open) { clamp.set(open); }
+    public void openClamp(boolean open) {
+        clamp.set(open);
+    }
 
     public void deployHooks(boolean out) {
         hooks.set(out ? DoubleSolenoid.Value.kForward : DoubleSolenoid.Value.kReverse);
@@ -62,15 +68,23 @@ public class Collector extends Subsystem {
         right.set(engaged ? Constants.Collector.RIGHT_BRAKE_POS : Constants.Collector.RIGHT_NEUTRAL_POS);
     }
 
-    public void setHatchMode(boolean hatchMode) { this.hatchMode = hatchMode; }
+    public void setHatchMode(boolean hatchMode) {
+        this.hatchMode = hatchMode;
+    }
 
-    public boolean isHatchMode() { return hatchMode; }
+    public boolean isHatchMode() {
+        return hatchMode;
+    }
 
-    public boolean isDeployed() { return deploy.get(); }
+    public boolean isDeployed() {
+        return deploy.get();
+    }
 
     // public boolean hasBall() { return ballSensor.getAverageVoltage() < 1.0; }
 
-    TalonSRX getDriveEncoderTalon() { return intake; }
+    TalonSRX getDriveEncoderTalon() {
+        return intake;
+    }
 
     @Override
     protected void initDefaultCommand() {

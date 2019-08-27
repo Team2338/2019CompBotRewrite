@@ -32,11 +32,11 @@ public class Elevator extends Subsystem {
         }
         return instance;
     }
-
-//    public void setPercentOutput(double percent) {
-//        lift.set(ControlMode.PercentOutput, percent);
-//    }
-
+    /*
+    public void setPercentOutput(double percent) {
+        lift.set(ControlMode.PercentOutput, percent);
+    }
+    */
     public void setPosition(double position) {
         lift.set(ControlMode.Position, position, DemandType.ArbitraryFeedForward, 0.15);
     }
@@ -93,8 +93,8 @@ public class Elevator extends Subsystem {
 
         talon.configForwardSoftLimitThreshold(Constants.Elevator.MAX_POS);
         talon.configReverseSoftLimitThreshold(Constants.Elevator.MIN_POS);
-        // talon.configForwardSoftLimitEnable(true);
-        // talon.configReverseSoftLimitEnable(true);
+//      talon.configForwardSoftLimitEnable(true);
+//      talon.configReverseSoftLimitEnable(true);
 
 //      talon.configMotionCruiseVelocity(Constants.Elevator.MAX_VELOCITY);
 //      talon.configMotionAcceleration(Constants.Elevator.MAX_ACCELERATION);

@@ -1,7 +1,5 @@
 package team.gif;
 
-import static java.lang.Math.*;
-
 public abstract class Constants {
 
     public static class Collector {

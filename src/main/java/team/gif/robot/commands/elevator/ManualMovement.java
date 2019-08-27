@@ -24,6 +24,7 @@ public class ManualMovement extends Command {
     @Override
     protected void execute() {
         elevator.manualMove(-OI.getInstance().aux.getY(GenericHID.Hand.kLeft));
+        elevator.setPosition(position);
     }
 
     @Override
