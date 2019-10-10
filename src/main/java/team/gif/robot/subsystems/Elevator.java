@@ -32,17 +32,25 @@ public class Elevator extends Subsystem {
         }
         return instance;
     }
-    /*
+
     public void setPercentOutput(double percent) {
         lift.set(ControlMode.PercentOutput, percent);
     }
-    */
+
     public void setPosition(double position) {
         lift.set(ControlMode.Position, position, DemandType.ArbitraryFeedForward, 0.15);
     }
 
     public double getPosition() {
         return lift.getSensorCollection().getQuadraturePosition();
+    }
+
+    public boolean getFwdLimit() {
+        return lift.getSensorCollection() .isFwdLimitSwitchClosed();
+    }
+
+    public int getClosedLoopError() {
+        return lift.getClosedLoopError();
     }
 
     public void displayMetrics() {

@@ -11,9 +11,15 @@ public class ManualMovement extends Command {
     private final Elevator elevator = Elevator.getInstance();
     private double position;
 
-    public ManualMovement(double setpoint) {
+    public ManualMovement(double position) {
+        if (position > Constants.Elevator.MAX_POS) {
+            position = Constants.Elevator.MAX_POS;
+        }
+        if (position < Constants.Elevator.MIN_POS) {
+            position = Constants.Elevator.MIN_POS;
+        }
+        this.position = position;
         requires(elevator);
-        position = setpoint;
     }
 
     @Override

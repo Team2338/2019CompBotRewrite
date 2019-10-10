@@ -16,7 +16,7 @@ public abstract class Constants {
     }
 
     public static class Elevator {
-        public static double P = 3.0;
+        public static final double P = 3.0;
         public static final double I = 0.0;
         public static final double D = 0.0;
         public static final double F = 0.0;

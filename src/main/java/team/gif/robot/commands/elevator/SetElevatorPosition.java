@@ -9,19 +9,32 @@ public class SetElevatorPosition extends Command {
     private final Elevator elevator = Elevator.getInstance();
     private double position;
 
-    public SetElevatorPosition(double setpoint) {
+    public SetElevatorPosition(double position) {
+        if (position > Constants.Elevator.MAX_POS) {
+            position = Constants.Elevator.MAX_POS;
+        }
+        if (position < Constants.Elevator.MIN_POS) {
+            position = Constants.Elevator.MIN_POS;
+        }
+        this.position = position;
         requires(elevator);
-        position = setpoint;
     }
 
     @Override
     protected void initialize() {
-        elevator.setP(Constants.Elevator.P);
-        elevator.setPosition(position);
+        if (position > elevator.getPosition()) {
+            elevator.setP(Constants.Elevator.P);
+            elevator.setCruiseVelocity(Constants.Elevator.MAX_VELOCITY);
+        }
     }
 
     @Override
     protected void execute() {
+        if (!elevator.getFwdLimit() && elevator.getClosedLoopError() < 0) {
+            elevator.setCruiseVelocity(400);
+        } else {
+            elevator.setCruiseVelocity(Constants.Elevator.MAX_VELOCITY);
+        }
 
     }
 
